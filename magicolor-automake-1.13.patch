@@ -1,0 +1,11 @@
+--- magicolor2530DL-2.1.1/configure.in.bero	2013-01-15 19:16:37.347452314 +0100
++++ magicolor2530DL-2.1.1/configure.in	2013-01-15 19:16:42.680388713 +0100
+@@ -4,7 +4,7 @@
+ AC_PREREQ(2.57)
+ AC_INIT(src/kmlf.h)
+ AC_CONFIG_SRCDIR([src/rastertokmlf.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS([config.h])
+ AM_INIT_AUTOMAKE(magicolor2530DL,2.1.1)
+ # Checks for programs.
+ AC_PROG_CC
