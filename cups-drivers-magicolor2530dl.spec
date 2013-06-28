@@ -27,17 +27,16 @@ This package contains CUPS drivers (PPD) for the following printers:
 
 %prep
 %setup -qn magicolor2530DL-%{version}
-%patch0 -p0
-%patch1 -p1 -b .am113~
+%apply_patches
 
 # Fix copy of CUPS headers in kmlf.h
-sed -i -e 's:\bcups_strlcpy:_cups_strlcpy:g' src/kmlf.h
+perl -pi -e 's:\bcups_strlcpy:_cups_strlcpy:g' src/kmlf.h
 
 # Remove asterisks from group names in PPD file
-gzip -dc src/km_en.ppd.gz | sed -e 's/(Group:\s+)\*/$1/g' | gzip > src/km_en.tmp.ppd.gz && mv -f src/km_en.tmp.ppd.gz src/km_en.ppd.gz
+gzip -dc src/km_en.ppd.gz | perl -p -e 's/(Group:\s+)\*/$1/g' | gzip > src/km_en.tmp.ppd.gz && mv -f src/km_en.tmp.ppd.gz src/km_en.ppd.gz
 
 # Determine the directory for the CUPS filters using the correct method
-sed -i -e 's:(CUPS_SERVERBIN=)"\$libdir/cups":$1`cups-config --serverbin`:' configure*
+perl -pi -e 's:(CUPS_SERVERBIN=)"\$libdir/cups":$1`cups-config --serverbin`:' configure*
 
 rm -f configure
 autoreconf -fi
