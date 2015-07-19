@@ -3,7 +3,7 @@
 Summary:	Cups Driver for KONICA MINOLTA magicolor 2530 DL
 Name:		cups-drivers-%{rname}
 Version:	2.1.1
-Release:	22
+Release:	23
 License:	GPLv2
 Group:		System/Printing
 Url:		http://printer.konicaminolta.net/
