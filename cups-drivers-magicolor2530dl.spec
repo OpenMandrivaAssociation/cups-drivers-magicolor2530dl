@@ -10,6 +10,7 @@ Url:		http://printer.konicaminolta.net/
 Source0:	magicolor2530DL-%{version}.tar.gz
 Patch0:		magicolor2430DL-shared_system_libs.diff
 Patch1:		magicolor-automake-1.13.patch
+Patch2:		magicolor-cups-2.2.patch
 
 BuildRequires:	cups-devel
 BuildRequires:	jbig-devel
