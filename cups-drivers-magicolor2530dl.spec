@@ -7,6 +7,7 @@ Release:	25
 License:	GPLv2
 Group:		System/Printing
 Url:		http://printer.konicaminolta.net/
+Source0:	magicolor2530DL-%{version}.tar.gz
 Patch0:		magicolor2530DL-shared_system_libs.diff
 Patch1:		magicolor2530DL-2.1.1-automake-1.13.patch
 Patch2:		magicolor2530DL-2.1.1-cups-2.2.patch
