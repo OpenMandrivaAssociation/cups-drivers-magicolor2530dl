@@ -1,0 +1,12 @@
+diff -up magicolor2530DL-2.1.1/configure.in.automake-1_13 magicolor2530DL-2.1.1/configure.in
+--- magicolor2530DL-2.1.1/configure.in.automake-1_13	2013-01-03 23:28:02.725972428 +0100
++++ magicolor2530DL-2.1.1/configure.in	2013-01-03 23:29:15.874261907 +0100
+@@ -4,7 +4,7 @@
+ AC_PREREQ(2.57)
+ AC_INIT(src/kmlf.h)
+ AC_CONFIG_SRCDIR([src/rastertokmlf.c])
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(magicolor2530DL,2.1.1)
+ # Checks for programs.
+ AC_PROG_CC

@@ -3,18 +3,18 @@
 Summary:	Cups Driver for KONICA MINOLTA magicolor 2530 DL
 Name:		cups-drivers-%{rname}
 Version:	2.1.1
-Release:	24
+Release:	25
 License:	GPLv2
 Group:		System/Printing
 Url:		http://printer.konicaminolta.net/
-Source0:	magicolor2530DL-%{version}.tar.gz
-Patch0:		magicolor2430DL-shared_system_libs.diff
-Patch1:		magicolor-automake-1.13.patch
-Patch2:		magicolor-cups-2.2.patch
+Patch0:		magicolor2530DL-shared_system_libs.diff
+Patch1:		magicolor2530DL-2.1.1-automake-1.13.patch
+Patch2:		magicolor2530DL-2.1.1-cups-2.2.patch
+Patch3:		magicolor2530DL-lcms2.patch
 
 BuildRequires:	cups-devel
 BuildRequires:	jbig-devel
-BuildRequires:	pkgconfig(lcms)
+BuildRequires:	pkgconfig(lcms2)
 Requires:	cups
 
 %description
@@ -28,7 +28,10 @@ This package contains CUPS drivers (PPD) for the following printers:
 
 %prep
 %setup -qn magicolor2530DL-%{version}
-%apply_patches
+%patch0 -p0
+%patch1 -p1 -b .automake-1_13
+%patch2 -p1 -b .cups-2_2
+%patch3 -p1 -b .lcms2
 
 # Fix copy of CUPS headers in kmlf.h
 perl -pi -e 's:\bcups_strlcpy:_cups_strlcpy:g' src/kmlf.h
@@ -43,12 +46,11 @@ rm -f configure
 autoreconf -fi
 
 %build
-%configure2_5x
-
-%make
+%configure
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc AUTHORS COPYING ChangeLog
